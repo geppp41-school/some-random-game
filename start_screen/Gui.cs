@@ -12,8 +12,10 @@ public partial class Gui : Control
 	private int CurrentWindowWidth = 1152;
 	[Export]public Control[] ControlItems = new Control[] {};
 	[Export]public Node2D[] Node2DItems = new Node2D[] {};
-	Dictionary<Object, Vector2> ItemScales = new Dictionary<object, Vector2>();
-	Dictionary<Object, Vector2> ItemPositions = new Dictionary<object, Vector2>();
+	private Dictionary<Object, Vector2> ItemScales = new Dictionary<object, Vector2>();
+	private Dictionary<Object, Vector2> ItemPositions = new Dictionary<object, Vector2>();
+
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -57,7 +59,6 @@ public partial class Gui : Control
 		Vector2I WindowSize = this.GetTree().Root.GetWindow().Size;
 		this.CurrentWindowWidth = WindowSize[0];
 		this.CurrentWindowHeight = WindowSize[1];
-		
 		Vector2 Scale = new Vector2((float)this.CurrentWindowWidth/(float)WindowWidth, (float)this.CurrentWindowHeight/(float)WindowHeight);
 		foreach(var key in this.ItemScales.Keys)
 		{
