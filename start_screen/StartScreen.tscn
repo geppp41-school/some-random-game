@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ck6b5qcahu2qo"]
+
+[ext_resource type="Script" uid="uid://bcu2e1g0ddnt5" path="res://start_screen/Gui.cs" id="1_tequv"]
+
+[node name="StartScreen" type="Node2D" unique_id=76756664]
+
+[node name="GUI" type="Control" parent="." unique_id=174252546]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_tequv")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="GUI" unique_id=2046408867]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+stretch_mode = 3
