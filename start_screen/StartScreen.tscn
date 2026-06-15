@@ -4,13 +4,13 @@
 
 [node name="StartScreen" type="Node2D" unique_id=76756664]
 
-[node name="GUI" type="Control" parent="." unique_id=174252546 node_paths=PackedStringArray("items")]
+[node name="GUI" type="Control" parent="." unique_id=174252546 node_paths=PackedStringArray("ControlItems")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_tequv")
-items = [NodePath("Background"), NodePath("PlayButton"), NodePath("QuitButton"), NodePath("SettingsButton")]
+ControlItems = [NodePath("Background"), NodePath("PlayButton"), NodePath("QuitButton"), NodePath("SettingsButton")]
 
 [node name="Background" type="ColorRect" parent="GUI" unique_id=706794492]
 layout_mode = 0

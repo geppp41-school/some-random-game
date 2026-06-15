@@ -18,11 +18,14 @@ public partial class Gui : Control
 	public override void _Ready()
 	{
 		this.SetDefaultScales();
+		this.SetDefaultPositions();
+		this.GetTree().Root.GetWindow().SizeChanged += UpdateGuiConfig;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		
 	}
 
 	public void SetDefaultScales()
@@ -46,6 +49,30 @@ public partial class Gui : Control
 		foreach(var item in this.Node2DItems)
 		{
 			this.ItemPositions.Add(item, item.Position);
+		}
+	}
+
+	public void UpdateGuiConfig()
+	{
+		Vector2I WindowSize = this.GetTree().Root.GetWindow().Size;
+		this.CurrentWindowWidth = WindowSize[0];
+		this.CurrentWindowHeight = WindowSize[1];
+		
+		Vector2 Scale = new Vector2((float)this.CurrentWindowWidth/(float)WindowWidth, (float)this.CurrentWindowHeight/(float)WindowHeight);
+		foreach(var key in this.ItemScales.Keys)
+		{
+			if (this.ControlItems.Contains(key))
+			{
+				Control item = (Control) key;
+				item.Scale = this.ItemScales[key] * Scale;
+				item.Position = this.ItemPositions[key] * Scale;
+			}
+			else if (this.Node2DItems.Contains(key))
+			{
+				Node2D item = (Node2D) key;
+				item.Scale = this.ItemScales[key] * Scale;
+				item.Position = this.ItemPositions[key] * Scale;
+			}
 		}
 	}
 }
