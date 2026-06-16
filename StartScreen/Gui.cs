@@ -38,7 +38,9 @@ public partial class Gui : Control
 		this.QuitButton = this.GetNode<Button>("QuitButton");
 		this.SettingsButton = this.GetNode<Button>("SettingsButton");
 
+		this.PlayButton.Pressed += this.PlayGame;
 		this.QuitButton.Pressed += this.Quit;
+		this.SettingsButton.Pressed += this.OpenSettingsMenu;
 
 		this.SetDefaultScales();
 		this.SetDefaultPositions();
