@@ -14,11 +14,32 @@ public partial class Gui : Control
 	[Export]public Node2D[] Node2DItems = new Node2D[] {};
 	private Dictionary<Object, Vector2> ItemScales = new Dictionary<object, Vector2>();
 	private Dictionary<Object, Vector2> ItemPositions = new Dictionary<object, Vector2>();
-
-
+	private PackedScene SettingsScene = GD.Load<PackedScene>("res://Settings/SettingsMenu.tscn");
+	private PackedScene Game = GD.Load<PackedScene>("res://Game/Game.tscn");
+	private PackedScene PauseMenu = GD.Load<PackedScene>("res://PauseMenu/PauseMenu.tscn");
+	private Button PlayButton;
+	private Button QuitButton;
+	private Button SettingsButton;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		foreach(var item in this.GetChildren())
+        {
+            if (item is Control controlItem)
+			{
+				this.ControlItems.Append(controlItem);
+			}
+			else if (item is Node2D node2DItem)
+			{
+				this.Node2DItems.Append(node2DItem);
+			}
+        }
+		this.PlayButton = this.GetNode<Button>("PlayButton");
+		this.QuitButton = this.GetNode<Button>("QuitButton");
+		this.SettingsButton = this.GetNode<Button>("SettingsButton");
+
+		this.QuitButton.Pressed += this.Quit;
+
 		this.SetDefaultScales();
 		this.SetDefaultPositions();
 		this.GetTree().Root.GetWindow().SizeChanged += UpdateGuiConfig;
@@ -59,6 +80,7 @@ public partial class Gui : Control
 		Vector2I WindowSize = this.GetTree().Root.GetWindow().Size;
 		this.CurrentWindowWidth = WindowSize[0];
 		this.CurrentWindowHeight = WindowSize[1];
+		
 		Vector2 Scale = new Vector2((float)this.CurrentWindowWidth/(float)WindowWidth, (float)this.CurrentWindowHeight/(float)WindowHeight);
 		foreach(var key in this.ItemScales.Keys)
 		{
@@ -76,4 +98,9 @@ public partial class Gui : Control
 			}
 		}
 	}
+
+	public void Quit()
+    {
+        this.GetTree().Quit();
+    }
 }

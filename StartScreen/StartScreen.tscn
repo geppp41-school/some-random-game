@@ -1,16 +1,15 @@
 [gd_scene format=3 uid="uid://ck6b5qcahu2qo"]
 
-[ext_resource type="Script" uid="uid://bcu2e1g0ddnt5" path="res://start_screen/Gui.cs" id="1_tequv"]
+[ext_resource type="Script" uid="uid://bcu2e1g0ddnt5" path="res://StartScreen/Gui.cs" id="1_tequv"]
 
 [node name="StartScreen" type="Node2D" unique_id=76756664]
 
-[node name="GUI" type="Control" parent="." unique_id=174252546 node_paths=PackedStringArray("ControlItems")]
+[node name="GUI" type="Control" parent="." unique_id=174252546]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_tequv")
-ControlItems = [NodePath("Background"), NodePath("PlayButton"), NodePath("QuitButton"), NodePath("SettingsButton")]
 
 [node name="Background" type="ColorRect" parent="GUI" unique_id=706794492]
 layout_mode = 0
