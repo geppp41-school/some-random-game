@@ -103,4 +103,14 @@ public partial class Gui : Control
     {
         this.GetTree().Quit();
     }
+
+	public void OpenSettingsMenu()
+    {
+        this.AddChild(this.SettingsScene.Instantiate());
+    }
+
+	public void PlayGame()
+    {
+        this.GetTree().ChangeSceneToPacked(this.Game);
+    }
 }
